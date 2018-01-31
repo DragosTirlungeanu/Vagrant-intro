@@ -19,4 +19,14 @@ Vagrant.configure("2") do |config|
   #provision
   config.vm.provision "shell", path: "environment/app/provision.sh"
 
+  #Multi-Machine Config
+  config.vm.define "lb1" do |lb1|
+   lb1.vm.box = "ubuntu/xenial64"
+  end
+
+  config.vm.define "db" do |db|
+   db.vm.box = "ubuntu/xenial64"
+  config.vm.network "private_network", ip: "192.168.10.150"
+  end
+
 end
