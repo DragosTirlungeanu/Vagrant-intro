@@ -9,32 +9,36 @@ required_pugins.each do |plugin|
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ubuntu/xenial64"
-  config.vm.network "private_network", ip: "192.168.10.100"
-  config.hostsupdater.aliases = ["dev.local"]
+  # config.vm.box = "ubuntu/xenial64"
+  # config.vm.network "private_network", ip: "192.168.10.100"
+  # config.hostsupdater.aliases = ["dev.local"]
 
-  # Synced app folder
-  config.vm.synced_folder "app", "/home/ubuntu/app"
+  # # Synced app folder
+  # config.vm.synced_folder "app", "/home/ubuntu/app"
 
-  #provision
-  config.vm.provision "shell", path: "environment/app/provision.sh"
+  # #provision
+  # config.vm.provision "shell", path: "environment/app/provision.sh"
 
-  #Multi-Machine Config
+  # #Multi-Machine Config
 
   config.vm.define "web" do |web|
    web.vm.box = "ubuntu/xenial64"
-   config.vm.network "private_network", ip: "192.168.10.100"
-   config.hostsupdater.aliases = ["dev.local"]
-   config.vm.synced_folder "app", "/home/ubuntu/app"
-   config.vm.provision "shell", path: "environment/app/provision.sh"
+   web.vm.network "private_network", ip: "192.168.10.100"
+   web.hostsupdater.aliases = ["dev.local"]
+
+   web.vm.synced_folder "app", "/home/ubuntu/app"
+
+   web.vm.provision "shell", path: "environment/app/provision.sh"
   end
 
   config.vm.define "db" do |db|
    db.vm.box = "ubuntu/xenial64"
-   config.vm.network "private_network", ip: "192.168.10.150"
-   config.hostsupdater.aliases = ["dev.local"]
-   config.vm.synced_folder "app", "/home/ubuntu/app"
-   config.vm.provision "shell", path: "environment/app/provision.sh"
+   db.vm.network "private_network", ip: "192.168.10.150"
+   db.hostsupdater.aliases = ["dev.local"]
+
+   db.vm.synced_folder "db", "/.vagrant/machines/db/virtualbox"
+
+   db.vm.provision "shell", path: "environment/app/provision.sh"
   end
 
 end
