@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
    db.vm.network "private_network", ip: "192.168.10.150"
    db.hostsupdater.aliases = ["dev.local"]
 
-   db.vm.synced_folder "db", "/.vagrant/machines/db/virtualbox"
+   db.vm.synced_folder "./db", "/home/ubuntu/db"
 
    db.vm.provision "shell", path: "environment/app/provision.sh"
   end
