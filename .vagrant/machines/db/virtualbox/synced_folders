@@ -1,1 +1,1 @@
-{"virtualbox":{"/home/ubuntu/app":{"guestpath":"/home/ubuntu/app","hostpath":"/Users/tech-a46/Desktop/dev-ops/intro/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/tech-a46/Desktop/dev-ops/intro","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/home/ubuntu/db":{"guestpath":"/home/ubuntu/db","hostpath":"/Users/tech-a46/Desktop/dev-ops/intro/db","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/tech-a46/Desktop/dev-ops/intro","disabled":false,"__vagrantfile":true}}}
