@@ -14,7 +14,6 @@ sudo apt-get install npm -y
 # install npm pm2
 sudo npm install -g pm2
 cd /home/ubuntu/app/
-sudo npm install
 
 # sudo unlink /etc/nginx/sites-enabled/default
 # sudo cp /home/ubuntu/templates/nginx.conf /etc/nginx/sites-available
@@ -25,4 +24,4 @@ sudo service nginx restart
 
 export DB_HOST=mongodb://192.168.10.100
 sudo echo export DB_HOST=mongodb://192.168.10.100 >> ~/.profile
-sudo pm2 start app.js
+
