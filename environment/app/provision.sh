@@ -22,6 +22,6 @@ cd /home/ubuntu/app/
 sudo service nginx configtest
 sudo service nginx restart
 
-export DB_HOST=mongodb://192.168.10.100
-sudo echo export DB_HOST=mongodb://192.168.10.100 >> ~/.profile
+export DB_HOST=mongodb://192.168.10.150
+sudo echo export DB_HOST=mongodb://192.168.10.150 >> ~/.profile
 
