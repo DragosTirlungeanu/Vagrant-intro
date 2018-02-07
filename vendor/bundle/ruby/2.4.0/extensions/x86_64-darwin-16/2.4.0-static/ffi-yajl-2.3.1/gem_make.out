@@ -1,0 +1,23 @@
+current directory: /Users/tech-a46/Desktop/dev-ops/intro/vendor/bundle/ruby/2.4.0/gems/ffi-yajl-2.3.1/ext/ffi_yajl/ext/dlopen
+/Users/tech-a46/.rbenv/versions/2.4.0/bin/ruby -r ./siteconf20180207-14498-1njunjd.rb extconf.rb
+ -O3 -Wno-error=shorten-64-to-32  -pipe
+-L. -L/Users/tech-a46/.rbenv/versions/2.4.0/lib  -fstack-protector -L/usr/local/lib
+checking for dlfcn.h... yes
+checking for dlopen() in -ldl... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/tech-a46/Desktop/dev-ops/intro/vendor/bundle/ruby/2.4.0/extensions/x86_64-darwin-16/2.4.0-static/ffi-yajl-2.3.1/mkmf.log
+
+current directory: /Users/tech-a46/Desktop/dev-ops/intro/vendor/bundle/ruby/2.4.0/gems/ffi-yajl-2.3.1/ext/ffi_yajl/ext/dlopen
+make "DESTDIR=" clean
+
+current directory: /Users/tech-a46/Desktop/dev-ops/intro/vendor/bundle/ruby/2.4.0/gems/ffi-yajl-2.3.1/ext/ffi_yajl/ext/dlopen
+make "DESTDIR="
+compiling dlopen.c
+linking shared-object ffi_yajl/ext/dlopen.bundle
+
+current directory: /Users/tech-a46/Desktop/dev-ops/intro/vendor/bundle/ruby/2.4.0/gems/ffi-yajl-2.3.1/ext/ffi_yajl/ext/dlopen
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 dlopen.bundle ./.gem.20180207-14498-lz235h/ffi_yajl/ext
