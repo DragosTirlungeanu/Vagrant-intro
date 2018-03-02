@@ -52,3 +52,28 @@ describe('Homepage', function() {
 //       });
 //   });
 // });
+
+describe('API Posts', function() {
+
+  var res;
+
+  before(function(done) {
+    chai.request(server)
+      .get('/api/posts')
+      .end(function(err, response){
+        res = response;
+
+        done();
+      });
+  });
+
+  it('should have status 200', function(done) {
+      res.should.have.status(200);
+      done();
+  });
+
+  it('should have first entry that has a title of Post 1', function(done) {
+      res.body[0].title.should.equal('Post 1');
+      done();
+  });
+});

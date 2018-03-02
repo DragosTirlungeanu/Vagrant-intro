@@ -19,19 +19,19 @@ Vagrant.configure("2") do |config|
                 # config.vm.provision "shell", path: "environment/app/provision.sh"
 
   # #Multi-Machine Config
-  config.vm.define "web" do |web|
-    web.vm.box = "ubuntu/xenial64"
-    web.vm.network "private_network", ip: "192.168.10.100"
-    web.hostsupdater.aliases = ["dev.local"]
-    web.vm.synced_folder "./app", "/home/ubuntu/app"
-    web.vm.provision "chef_solo" do |chef|
+  config.vm.define "app" do |app|
+    app.vm.box = "ubuntu/xenial64"
+    app.vm.network "private_network", ip: "192.168.10.100"
+    app.hostsupdater.aliases = ["dev.local"]
+    app.vm.synced_folder "./app", "/home/ubuntu"
+    app.vm.provision "chef_solo" do |chef|
       chef.add_recipe "node::default"
     end
-               # web.vm.synced_folder "./environment/app/profiled", "/etc/profile.d"
-               # web.vm.synced_folder "./environment/app/templates", "/home/ubuntu/templates"
+               # app.vm.synced_folder "./environment/app/profiled", "/etc/profile.d"
+               # app.vm.synced_folder "./environment/app/templates", "/home/ubuntu/templates"
 
     # Synced app folder
-    # web.vm.provision "shell", path: "environment/app/provision.sh"
+    # app.vm.provision "shell", path: "environment/app/provision.sh"
   end
 
   config.vm.define "db" do |db|

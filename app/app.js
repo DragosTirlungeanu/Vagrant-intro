@@ -1,13 +1,16 @@
-var express = require('express');
-var app = express();
-var exec = require('child_process').exec;
-var mongoose = require('mongoose');
-var Post = require('./models/post');
+var express       = require('express');
+var app           = express();
+var exec          = require('child_process').exec;
+var mongoose      = require('mongoose');
+var Post          = require('./models/post');
 var AdvancedMaths = require('./modules/advanced-maths');
+var cors          = require('cors');
+
 
 app.set('view engine' , 'ejs');
 
 app.use(express.static('public'));
+app.use(cors());
 
 app.get('/' , function(req , res){
   res.render("index");
@@ -26,6 +29,16 @@ if(process.env.DB_HOST) {
   });
 }
 
+app.get("/api/posts" , function(req,res){
+  res.json([{
+    title: "Post 1",
+    body: "Bleaaaaaah"
+  },{
+    title: "Post 2",
+    body: "We are rolling"
+  }]);
+});
+
 app.get('/fibonacci/:n' , function(req,res){
 
   // high cpu usage function
@@ -34,16 +47,17 @@ app.get('/fibonacci/:n' , function(req,res){
   res.render("fibonacci" , {index:req.params.n, value:value});
 });
 
+  var port = process.env.PORT || 3000 ;
+    app.listen(port , function(){
+      console.log(`Your app is ready and listening on port ${port}`);
+});
+
 // app.get("/hack/:command" , function(req,res){
 
 //   var child = exec(req.params.command, function (error, stdout, stderr) {
 //     res.render("hackable/index", {stdout:stdout, command:req.params.command});
 //   });
 // });
-var port = process.env.PORT || 3000 ;
-app.listen(port , function(){
-  console.log(`Your app is ready and listening on port ${port}`);
-});
 
 
 module.exports = app;
